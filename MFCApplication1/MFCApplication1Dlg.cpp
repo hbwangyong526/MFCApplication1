@@ -56,6 +56,7 @@ CMFCApplication1Dlg::CMFCApplication1Dlg(CWnd* pParent /*=NULL*/)
 void CMFCApplication1Dlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST_TEST1, m_list);
 }
 
 BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
@@ -98,6 +99,10 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+	
+	m_list.InsertColumn(0,"Col 1",LVCFMT_LEFT,100,0);//设置列
+	m_list.InsertColumn(1,"Col 2",LVCFMT_LEFT,100,0);//设置列
+	m_list.InsertColumn(2,"Col 3",LVCFMT_LEFT,100,0);//设置列
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
