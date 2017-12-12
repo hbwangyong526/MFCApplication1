@@ -1,5 +1,2 @@
-<<<<<<< .mine
-123111123222abcdefqq
-=======
-123111123222abcdefpp
->>>>>>> .theirs
+123111123222abcdefpp123111123222abcdefqq
+
