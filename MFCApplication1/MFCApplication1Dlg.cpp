@@ -99,10 +99,34 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+	int nColIdx = -1;
+	int nRowIdx = -1;
+	int nColNum = 4;
+	DWORD dwStyle = m_list.GetStyle();
+	m_list.SetExtendedStyle( dwStyle | LVS_EX_GRIDLINES);
+
+	CRect rcLstCtl;
+
+	m_list.GetClientRect(&rcLstCtl);
+
+	int nColWid = rcLstCtl.Width()/nColNum;
 	
-	m_list.InsertColumn(0,"Col 1",LVCFMT_LEFT,100,0);//设置列
-	m_list.InsertColumn(1,"Col 2",LVCFMT_LEFT,100,0);//设置列
-	m_list.InsertColumn(2,"Col 3",LVCFMT_LEFT,100,0);//设置列
+	nColIdx = m_list.InsertColumn(0,"name",LVCFMT_LEFT,nColWid,0);//设置列0
+	m_list.InsertColumn(++nColIdx,"age",LVCFMT_LEFT,nColWid,0);//设置列1
+	m_list.InsertColumn(++nColIdx,"gender",LVCFMT_LEFT,nColWid,0);//设置列2
+	m_list.InsertColumn(++nColIdx,"address",LVCFMT_LEFT,nColWid,0);//设置列4
+
+	nRowIdx = m_list.InsertItem(0,"");
+	m_list.SetItemText(nRowIdx,0,"abc");
+	m_list.SetItemText(nRowIdx,1,"23");
+	m_list.SetItemText(nRowIdx,2,"male");
+	m_list.SetItemText(nRowIdx,3,"xxx123456");
+
+	nRowIdx = m_list.InsertItem(1,"");
+	m_list.SetItemText(nRowIdx,0,"def");
+	m_list.SetItemText(nRowIdx,1,"33");
+	m_list.SetItemText(nRowIdx,2,"female");
+	m_list.SetItemText(nRowIdx,3,"yyy123456");
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
